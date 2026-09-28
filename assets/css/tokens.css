@@ -1,0 +1,96 @@
+/* Penguin Fashion — design tokens: typefaces, colour, type scale, spacing, shape and motion. */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("../fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2-variations"),
+       url("../fonts/inter-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* Colour */
+  --ivory: #f6f1e7;        /* page */
+  --paper: #fbf8f2;        /* raised surfaces: cards, dialogs, drawers */
+  --stone: #ece5d8;        /* product image panels */
+  --stone-deep: #e2d9c8;
+  --blush: #efe0d3;        /* Bold Color edit panel */
+  --olive-tint: #e3e4d4;   /* Weekend edit panel, selected backgrounds */
+  --line: #ddd4c4;         /* fine dividers (decorative) */
+  --line-strong: #c3b7a2;  /* card and panel outlines (decorative) */
+  --control: #8c8273;      /* borders that identify form controls: 3.4:1 or more on ivory and paper */
+  --charcoal: #23211d;     /* text, primary buttons */
+  --charcoal-2: #3a3731;   /* primary hover */
+  --graphite: #5a554c;     /* secondary text */
+  --olive: #5e6644;        /* accents: selected and success states */
+  --olive-deep: #454c30;
+  --bronze: #a5723f;       /* small touches only: numerals, hairlines, the penguin's beak */
+  --bronze-deep: #83572a;  /* bronze for small text */
+  --danger: #9a3a26;
+  --danger-tint: #f4e3dc;
+  --success-tint: #e6e8d8;
+  --on-dark: #f6f1e7;
+  --on-dark-muted: #bdb5a6;
+
+  /* Type */
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-xs: 0.75rem;      /* 12 */
+  --text-sm: 0.875rem;     /* 14 */
+  --text-base: 1rem;       /* 16 */
+  --text-md: 1.0625rem;    /* 17 */
+  --text-lg: 1.1875rem;    /* 19 */
+  --display-sm: clamp(1.625rem, 1.3rem + 1vw, 2rem);
+  --display-md: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  --display-lg: clamp(2.375rem, 1.5rem + 2.8vw, 3.75rem);
+  --display-xl: clamp(3rem, 1.4rem + 5vw, 6rem);
+
+  /* Space (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --section-space: clamp(72px, 9vw, 128px);
+  --gutter: clamp(16px, 4vw, 48px);
+  --max-width: 1320px;
+  --header-h: 64px;
+
+  /* Shape and depth */
+  --radius-sm: 3px;
+  --radius: 4px;
+  --radius-lg: 8px;
+  --shadow-soft: 0 1px 2px rgba(35, 33, 29, 0.06), 0 8px 24px rgba(35, 33, 29, 0.06);
+  --shadow-overlay: 0 24px 64px rgba(35, 33, 29, 0.22);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --fast: 140ms;
+  --medium: 220ms;
+}
+
+@media (max-width: 719px) {
+  :root { --header-h: 56px; }
+}
