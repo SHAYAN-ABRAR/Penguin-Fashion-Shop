@@ -86,6 +86,8 @@ dialog[open]::backdrop { animation: backdrop-in var(--medium) var(--ease); }
 }
 .pd-feedback:empty { display: none; }
 .pd-feedback .icon { width: 18px; height: 18px; }
+/* The message stays on the icon's line and wraps beside it; "View bag" moves below only when there's no room. */
+.pd-feedback > span { flex: 1 1 12rem; min-width: 0; }
 .pd-feedback .link-button { min-height: 40px; color: var(--olive-deep); }
 .pd-notes { display: grid; gap: 6px; font-size: var(--text-sm); color: var(--graphite); }
 .pd-notes p { display: flex; gap: 8px; align-items: flex-start; }
@@ -119,6 +121,8 @@ dialog[open]::backdrop { animation: backdrop-in var(--medium) var(--ease); }
     position: sticky; bottom: 0; z-index: 2; margin-inline: -16px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
     background: rgba(251, 248, 242, 0.97); border-top: 1px solid var(--line);
   }
+  /* Anything scrolled into view or focused stops above the sticky Add to bag bar, never under it. */
+  .pd-scroll { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
   .pd-details { padding-bottom: 8px; }
   .pd-related { padding: 24px 16px 32px; }
   .related-grid { gap: 10px; }
@@ -296,6 +300,14 @@ dialog[open]::backdrop { animation: backdrop-in var(--medium) var(--ease); }
 .toast-close:hover { background: #3a3731; }
 .toast :focus-visible { outline-color: var(--on-dark); }
 @media (min-width: 900px) { .toast-region { left: auto; right: 24px; transform: none; } }
+/* On narrow phones the action moves under the message, so the message keeps a readable width. */
+@media (max-width: 419px) {
+  .toast { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "media body close" "media action close"; row-gap: 0; }
+  .toast > :first-child { grid-area: media; align-self: start; }
+  .toast-body { grid-area: body; }
+  .toast-action { grid-area: action; justify-self: start; padding: 0; }
+  .toast-close { grid-area: close; align-self: start; }
+}
 
 .size-guide-link { min-height: 40px; }
 .pd-form { display: grid; gap: 16px; }

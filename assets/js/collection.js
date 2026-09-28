@@ -13,7 +13,7 @@ const SORTS = {
   "price-asc": (a, b) => a.price - b.price || a.number - b.number,
   "price-desc": (a, b) => b.price - a.price || a.number - b.number,
 };
-const SORT_LABELS = { featured: "Featured", "price-asc": "Price: low to high", "price-desc": "Price: high to low" };
+const SORT_LABELS = { featured: "Featured", "price-asc": "Lowest price", "price-desc": "Highest price" };
 
 let state = { ...DEFAULTS };
 let els = {};

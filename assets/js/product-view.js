@@ -6,7 +6,7 @@
 
 import { PRODUCTS, productById, styleById, fitById, sizesFor, imageSrc, imageSrcset, MAX_QUANTITY } from "./catalog.js";
 import { bag, saved } from "./store.js";
-import { escapeHTML, formatPrice, icon, pad2, plural, openModal, closeModal, setupModal, announce } from "./ui.js";
+import { escapeHTML, formatPrice, icon, pad2, plural, openModal, closeModal, setupModal, announce, reduceMotion } from "./ui.js";
 import { provide, run } from "./actions.js";
 
 const selections = new Map(); // product id -> chosen size, remembered for this visit
@@ -194,7 +194,7 @@ function showSizeError(form) {
   });
   const first = form.querySelector('input[name="size"]');
   first.focus({ preventScroll: true });
-  field.scrollIntoView({ block: "center", behavior: "smooth" });
+  field.scrollIntoView({ block: "center", behavior: reduceMotion() ? "auto" : "smooth" });
   announce("Choose a size to add this piece to your bag.");
 }
 

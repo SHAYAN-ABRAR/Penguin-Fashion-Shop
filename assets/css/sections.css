@@ -206,7 +206,13 @@
   .toolbar-filters { display: none; }
   .filters-button { display: inline-flex; grid-area: filters-button; width: 100%; }
   .toolbar-sort .field-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .toolbar .select { padding-left: 12px; padding-right: 34px; background-position: right 10px center; }
   .results-bar { min-height: 0; padding-block: 14px 4px; }
+}
+/* On the narrowest phones the sort menu gets a little more room than Filters, so its label never truncates. */
+@media (max-width: 379px) {
+  .toolbar { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); }
+  .filters-button { padding-inline: 12px; }
 }
 
 .product-grid {
@@ -326,7 +332,9 @@
 .edit-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
 
 @media (max-width: 899px) {
-  .edit-slide { grid-template-columns: 1fr; }
+  /* Slides share the tallest slide's height; the spare room goes to the text, so the art keeps its
+     proportions and every composition stays inside its slide. */
+  .edit-slide { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .edit-art { aspect-ratio: 5 / 4; min-height: 0; height: auto; }
   .edit-copy { gap: 14px; padding: 22px 20px 24px; align-content: start; }
   .edit-idea { font-size: var(--text-md); }
