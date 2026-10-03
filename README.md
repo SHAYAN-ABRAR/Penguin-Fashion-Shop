@@ -1,20 +1,20 @@
 # Penguin Fashion
 
-A small winterwear boutique storefront, styled like a printed winter lookbook. It has six coats and jackets, search and filters, a product view with zoom and a size guide, a shoppable "Winter Edit", and a bag and wishlist that are saved in your browser. It's a demo: the products, sizes and prices are sample data, and there's no checkout.
+A winterwear concept store with a bold editorial identity: oversized typography, cool neutrals, a chartreuse accent, and three original AI-generated fashion campaign images. It has six coats and jackets, search and filters, a product view with zoom and a size guide, a shoppable "Winter Edit", and a bag and wishlist that are saved in your browser. It's a demo: the products, sizes and prices are sample data, and there's no checkout.
 
 **Live site:** <https://shayan-abrar.github.io/Penguin-Fashion-Shop/>
 
 <p align="center">
-  <img src="screenshots/home.jpg" width="800" alt="Home page: the headline Quiet layers for loud weather beside a composition of a marigold pea coat and a navy quilted puffer on warm stone panels, with shop-by-style shortcuts underneath">
+  <img src="screenshots/home.jpg" width="800" alt="Home page: GO OUT. STAND OUT. over an original city fashion campaign, with shop-by-style shortcuts underneath">
 </p>
 
 <table>
   <tr>
     <td align="center" width="20%"><a href="screenshots/collection.jpg"><img src="screenshots/collection.jpg" width="150" alt="The collection with a search box, style, fit and hooded filters, a sort menu and a grid of jackets"></a><br><sub><b>Collection</b></sub></td>
-    <td align="center" width="20%"><a href="screenshots/product.jpg"><img src="screenshots/product.jpg" width="150" alt="Product view of the Summit Color-Block Puffer with a large photo, size buttons, a size guide link and Add to bag"></a><br><sub><b>Product view</b></sub></td>
-    <td align="center" width="20%"><a href="screenshots/winter-edit.jpg"><img src="screenshots/winter-edit.jpg" width="150" alt="The Bold Color Edit: a red biker jacket, a marigold pea coat and a primrose rain jacket with a styling idea and links to each piece"></a><br><sub><b>The Winter Edit</b></sub></td>
-    <td align="center" width="20%"><a href="screenshots/bag.jpg"><img src="screenshots/bag.jpg" width="150" alt="The bag drawer listing three jackets with quantity controls, a subtotal and a note that it's saved on this device"></a><br><sub><b>Bag</b></sub></td>
-    <td align="center" width="20%"><a href="screenshots/mobile.jpg"><img src="screenshots/mobile.jpg" width="150" alt="Four phone screens: the home page, a product view with a size chosen, the Everyday Edit and the bag sheet"></a><br><sub><b>Phone</b></sub></td>
+    <td align="center" width="20%"><a href="screenshots/product.jpg"><img src="screenshots/product.jpg" width="150" alt="Product view of the Marigold Pea Coat with a large photo, size buttons, a size guide link and Add to bag"></a><br><sub><b>Product view</b></sub></td>
+    <td align="center" width="20%"><a href="screenshots/winter-edit.jpg"><img src="screenshots/winter-edit.jpg" width="150" alt="The Bold Color Edit: an original campaign photograph, a styling idea and links to three matching catalog pieces"></a><br><sub><b>The Winter Edit</b></sub></td>
+    <td align="center" width="20%"><a href="screenshots/bag.jpg"><img src="screenshots/bag.jpg" width="150" alt="The bag drawer with quantity controls, a subtotal and a note that it's saved on this device"></a><br><sub><b>Bag</b></sub></td>
+    <td align="center" width="20%"><a href="screenshots/mobile.jpg"><img src="screenshots/mobile.jpg" width="150" alt="The redesigned home page on a phone"></a><br><sub><b>Phone</b></sub></td>
   </tr>
 </table>
 
@@ -42,11 +42,11 @@ Then open <http://localhost:8000/Penguin-Fashion-Shop/>. Python shows its own er
 ## What's on the site
 
 - **Header:** the Penguin Fashion mark, links to each section, search, saved pieces and the bag, with live counts. On phones the links move into a menu that opens from the bottom of the screen.
-- **Hero:** "Quiet layers for loud weather", with **Explore the collection** and a link to the Winter Edit, beside a composition of two pieces from the collection. Shortcuts for each style sit just below it.
+- **Hero:** "GO OUT. STAND OUT." over an original city campaign image, with **Find your layer** and a link to the Winter Edit. Shop-by-style shortcuts sit just below it.
 - **Collection:** search by name, color or style; filter by style (coats, rain jackets, biker jackets, puffers), fit (women's or men's) and hooded; sort by price. Active filters show as tags you can remove, with a result count, **Clear all** and a designed no-results state. The current search, filters and sort are kept in the address, so they survive a refresh and the back button.
 - **Product view:** opens over the collection as a dialog, with a large photo you can zoom (select it, then move across it; arrow keys work too), the price, color, description and what's visible in the photo. A size is required before **Add to bag**, with an inline message if it's missing. The size guide has how-to-measure steps and sample measurements in centimeters or inches. Related pieces open in the same view. The back button closes it, leaving your filters and scroll position as they were, and `?product=<id>` links open a piece directly.
-- **The Winter Edit:** three looks built from the collection (Everyday, Bold color and Weekend), each with its own composition, a styling idea, links to its pieces and **Shop this edit**, which shows just those pieces in the collection. The carousel moves only when you use its buttons, tabs, arrow keys or a swipe.
-- **About, FAQ and footer:** why "penguins", answers about sizing, saving and ordering, and a footer with links and the demo notice.
+- **The Winter Edit:** three looks built from the collection (Everyday, Bold color and Weekend), each with an original campaign photograph, a styling idea, links to its pieces and **Shop this edit**, which shows just those pieces in the collection. The carousel moves only when you use its buttons, tabs, arrow keys or a swipe.
+- **About, FAQ and footer:** a coastal editorial and brand story, answers about sizing, saving and ordering, and a large Penguin wordmark with project links and the demo notice.
 
 ## The bag and saved pieces
 
@@ -84,11 +84,12 @@ assets/js/lookbook.js         The Winter Edit carousel
 assets/js/bag-drawer.js       The bag
 assets/js/saved-drawer.js     Saved pieces
 assets/js/header.js           Counts, the section you're in, the mobile menu and search
-assets/js/hero.js             Hero captions and the style shortcuts, filled in from the catalog
+assets/js/hero.js             Style shortcuts with live catalog counts
 assets/js/ui.js               Shared helpers: prices, icons, dialogs, announcements and toasts
 assets/js/actions.js          A small registry the modules use to call each other
 assets/js/main.js             Starts everything
 assets/img/products/          Product photos as WebP at 720, 400 and 200 pixels wide
+assets/img/editorial/         Three generated campaign images, responsive WebP files and exact prompts
 assets/fonts/                 Instrument Serif and Inter (WOFF2) with their licenses
 tools/prepare_product_image.py  Prepares a new product photo at the same scale as the others
 screenshots/                  Images used in this README
@@ -113,9 +114,12 @@ Cards, the product view, search, filters, the edits, the bag and saved pieces al
 
 ## Design
 
-- **Typefaces:** Instrument Serif for headlines and product names, and Inter for everything else. Both are self-hosted, so nothing loads from other sites.
-- **Colors:** warm ivory (`#F6F1E7`) and paper (`#FBF8F2`) backgrounds, stone (`#ECE5D8`) image panels, charcoal (`#23211D`) text and buttons, muted olive (`#5E6644`) for selected and success states, and small touches of bronze (`#A5723F`).
-- Every product photo is shown in full, at the same scale, on a 4:5 panel, so shapes can be compared at a glance.
+- **Art direction:** a contemporary outerwear campaign with a full-bleed city hero, clear shopping grid, dark lookbook spread, coastal brand story, and oversized footer wordmark.
+- **Type:** self-hosted Inter for both bold headlines and small utility text. Instrument Serif files and their license are retained from the original project.
+- **Palette:** off-white (`#F7F8F4`), cool grey-green product panels, deep forest-charcoal (`#171B17`) and chartreuse (`#E5F164`).
+- **Shopping:** original catalog photographs, stable product IDs, existing localStorage keys, product links and all shopping functions are retained.
+- **Motion:** small hover details and a restrained entrance animation that respects reduced-motion preferences. The lookbook remains user-controlled.
+- **Campaign images:** original AI-generated styling inspiration, distinct from catalog product photographs. The exact prompts and responsive file names are documented in [assets/img/editorial/README.md](assets/img/editorial/README.md).
 
 ## Tech stack
 
@@ -126,7 +130,8 @@ Cards, the product view, search, filters, the edits, the bag and saved pieces al
 ## Credits
 
 - **Typefaces:** Instrument Serif, Copyright 2022 The Instrument Serif Project Authors, and Inter, Copyright 2016 The Inter Project Authors, both under the SIL Open Font License 1.1. The license files are in `assets/fonts/`.
-- **Photos:** the product photos came with the original version of this project, and their sources aren't recorded.
+- **Product photos:** the product photos came with the original version of this project, and their sources aren't recorded.
+- **Campaign imagery:** three original images generated for this redesign. See the [image notes and prompts](assets/img/editorial/README.md).
 
 ## Contributing
 

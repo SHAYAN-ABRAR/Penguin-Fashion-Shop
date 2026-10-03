@@ -3,17 +3,23 @@
  * previous/next buttons and the arrow keys move it too. It never moves on its own, and slides that
  * aren't showing are inert so keyboard and screen-reader users only meet the current one. */
 
-import { EDITS, productById, imageSrc, imageSrcset } from "./catalog.js";
+import { EDITS, productById, imageSrc } from "./catalog.js";
 import { escapeHTML, formatPrice, icon, pad2, announce, reduceMotion } from "./ui.js";
 
 function slideHTML(edit, index, total) {
   const products = edit.products.map((id) => productById[id]);
-  const pieces = products.map((p, i) => `
-    <figure class="piece-${i + 1}">
-      <img src="${imageSrc(p, 400)}" srcset="${imageSrc(p, 400)} 400w, ${imageSrc(p, 720)} 720w"
-           sizes="${i === 0 ? "(min-width: 900px) 28vw, 48vw" : "(min-width: 900px) 18vw, 30vw"}"
-           width="400" height="500" alt="${escapeHTML(p.name)}" loading="lazy" decoding="async">
-    </figure>`).join("");
+  const campaign = {
+    everyday: { image: "city", width: 1536, height: 1024, small: 768, alt: "Two models in yellow and navy outerwear in a concrete city plaza." },
+    "bold-color": { image: "color", width: 960, height: 1440, small: 480, alt: "A model in a vivid red jacket against a concrete wall." },
+    weekend: { image: "coast", width: 960, height: 1440, small: 480, alt: "A model in grey and yellow outerwear walking along a coastal seawall." },
+  }[edit.id];
+  // New edits without campaign art retain an accurate catalog image.
+  const art = campaign
+    ? `<img class="edit-campaign" src="assets/img/editorial/${campaign.image}-${campaign.width}.webp"
+         srcset="assets/img/editorial/${campaign.image}-${campaign.small}.webp ${campaign.small}w, assets/img/editorial/${campaign.image}-${campaign.width}.webp ${campaign.width}w"
+         sizes="(min-width: 900px) 55vw, 100vw" width="${campaign.width}" height="${campaign.height}"
+         alt="AI-generated styling inspiration: ${escapeHTML(campaign.alt)}" loading="lazy" decoding="async">`
+    : `<img class="edit-catalog-fallback" src="${imageSrc(products[0], 720)}" width="720" height="900" alt="${escapeHTML(products[0].alt)}" loading="lazy">`;
   const list = products.map((p) => `
     <li><a class="edit-product" href="?product=${encodeURIComponent(p.id)}" data-open-product="${p.id}">
       <img src="${imageSrc(p, 200)}" width="200" height="250" alt="" loading="lazy" decoding="async">
@@ -25,14 +31,14 @@ function slideHTML(edit, index, total) {
              aria-label="${index + 1} of ${total}: ${escapeHTML(edit.title)}" data-edit="${edit.id}">
       <div class="edit-art">
         <p class="edit-art-label" aria-hidden="true">Edit ${pad2(index + 1)}</p>
-        ${pieces}
+        ${art}<p class="edit-art-caption">${campaign ? "AI-GENERATED CAMPAIGN / STYLING INSPIRATION" : "FROM THE COLLECTION"}</p>
       </div>
       <div class="edit-copy">
-        <p class="edit-number">Edit ${pad2(index + 1)} of ${pad2(total)}</p>
+        <p class="edit-number">THE LOOKBOOK / ${pad2(index + 1)}</p>
         <h3 class="edit-title">${escapeHTML(edit.title)}</h3>
         <p class="edit-idea">${escapeHTML(edit.idea)}</p>
         <p class="edit-styling">${escapeHTML(edit.styling)}</p>
-        <ul class="edit-products" role="list" aria-label="In this edit">${list}</ul>
+        <p class="edit-shop-label">BUILD THE MOOD WITH THESE PIECES</p><ul class="edit-products" role="list" aria-label="In this edit">${list}</ul>
         <div class="edit-actions">
           <button type="button" class="btn btn-primary" data-shop-edit="${edit.id}">Shop this edit${icon("arrowRight")}</button>
         </div>
@@ -74,7 +80,7 @@ export function initLookbook() {
   function goTo(index, { instant = false, speak = true } = {}) {
     const target = ((index % total) + total) % total;
     show(target);
-    track.scrollTo({ left: slides[target].offsetLeft, behavior: instant || reduceMotion() ? "auto" : "smooth" });
+    track.scrollTo({ left: slides[target].offsetLeft - slides[0].offsetLeft, behavior: instant || reduceMotion() ? "auto" : "smooth" });
     if (speak) announce(`Edit ${target + 1} of ${total}: ${EDITS[target].title}`);
   }
 

@@ -28,30 +28,32 @@
 
 :root {
   /* Colour */
-  --ivory: #f6f1e7;        /* page */
-  --paper: #fbf8f2;        /* raised surfaces: cards, dialogs, drawers */
-  --stone: #ece5d8;        /* product image panels */
-  --stone-deep: #e2d9c8;
-  --blush: #efe0d3;        /* Bold Color edit panel */
-  --olive-tint: #e3e4d4;   /* Weekend edit panel, selected backgrounds */
-  --line: #ddd4c4;         /* fine dividers (decorative) */
-  --line-strong: #c3b7a2;  /* card and panel outlines (decorative) */
-  --control: #8c8273;      /* borders that identify form controls: 3.4:1 or more on ivory and paper */
-  --charcoal: #23211d;     /* text, primary buttons */
-  --charcoal-2: #3a3731;   /* primary hover */
-  --graphite: #5a554c;     /* secondary text */
-  --olive: #5e6644;        /* accents: selected and success states */
-  --olive-deep: #454c30;
-  --bronze: #a5723f;       /* small touches only: numerals, hairlines, the penguin's beak */
-  --bronze-deep: #83572a;  /* bronze for small text */
+  --ivory: #f7f8f4;        /* page */
+  --paper: #ffffff;        /* raised surfaces: cards, dialogs, drawers */
+  --stone: #edeEEA;        /* product image panels */
+  --stone-deep: #e1e3de;
+  --blush: #eee5e3;        /* Bold Color edit panel */
+  --olive-tint: #f0f3c8;   /* Weekend edit panel, selected backgrounds */
+  --line: #d9dcd5;         /* fine dividers (decorative) */
+  --line-strong: #b6bbb2;  /* card and panel outlines (decorative) */
+  --control: #7e847b;      /* borders that identify form controls: 3.4:1 or more on ivory and paper */
+  --charcoal: #171b17;     /* text, primary buttons */
+  --charcoal-2: #333a31;   /* primary hover */
+  --graphite: #575e55;     /* secondary text */
+  --olive: #425537;        /* accents: selected and success states */
+  --olive-deep: #243c24;
+  --bronze: #c2cf3a;       /* small touches only: numerals, hairlines, the penguin's beak */
+  --bronze-deep: #59643a;  /* bronze for small text */
   --danger: #9a3a26;
   --danger-tint: #f4e3dc;
   --success-tint: #e6e8d8;
-  --on-dark: #f6f1e7;
-  --on-dark-muted: #bdb5a6;
+  --on-dark: #f7f8f4;
+  --on-dark-muted: #b7bdb4;
+
+  --accent: #e5f164;
 
   /* Type */
-  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --text-xs: 0.75rem;      /* 12 */
   --text-sm: 0.875rem;     /* 14 */
@@ -73,15 +75,15 @@
   --space-7: 48px;
   --space-8: 64px;
   --space-9: 96px;
-  --section-space: clamp(72px, 9vw, 128px);
-  --gutter: clamp(16px, 4vw, 48px);
-  --max-width: 1320px;
-  --header-h: 64px;
+  --section-space: clamp(64px, 7.5vw, 112px);
+  --gutter: clamp(20px, 3.6vw, 56px);
+  --max-width: 1536px;
+  --header-h: 82px;
 
   /* Shape and depth */
-  --radius-sm: 3px;
-  --radius: 4px;
-  --radius-lg: 8px;
+  --radius-sm: 0px;
+  --radius: 2px;
+  --radius-lg: 2px;
   --shadow-soft: 0 1px 2px rgba(35, 33, 29, 0.06), 0 8px 24px rgba(35, 33, 29, 0.06);
   --shadow-overlay: 0 24px 64px rgba(35, 33, 29, 0.22);
 
@@ -92,5 +94,5 @@
 }
 
 @media (max-width: 719px) {
-  :root { --header-h: 56px; }
+  :root { --header-h: 68px; }
 }
